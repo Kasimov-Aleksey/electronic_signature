@@ -1,0 +1,6 @@
+*.log
+*.tmp
+.idea/
+.vscode/
+*.class
+*.obj
