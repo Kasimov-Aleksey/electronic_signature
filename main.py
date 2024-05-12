@@ -55,18 +55,20 @@ def check_m():
         data["b"] = 1
         data["p"] = 101
         p = data["p"]
+        a = data["a"]
+        b = data["b"]
         # print(data)
         data_x_and_y = set()
         F_m_squared_mod = {(y**2) % p: y for y in tuple(range(0, int(p/2)))}
         for x in tuple(range(int(-p/2), int(p/2)+1)):
-            y = (x**3 + 4 * x + 1) % p
+            y = (x**3 + a * x + b) % p #
             # print(x)
             if y == 0:
                 data_x_and_y.add((x, y))
-                # print((x, y))
+                print((x, y))
             elif y in F_m_squared_mod:
-                # print((x, -F_m_squared_mod[y]))
-                # print((x, F_m_squared_mod[y]))
+                print((x, -F_m_squared_mod[y]))
+                print((x, F_m_squared_mod[y]))
                 data_x_and_y.add((x, -F_m_squared_mod[y]))
                 data_x_and_y.add((x, F_m_squared_mod[y]))
             # else:
@@ -85,7 +87,7 @@ def prime_number_q():
     for q in range(data["m"], 0, -1):
         if data["m"]/q == data["m"]//q and q > 3: # удалить and q > 3
 
-            print(q)
+            # print(q)
             if t > q:
                 t = q
             flag = True  # Флаг для проверки простоты числа
@@ -105,8 +107,8 @@ def prime_number_q():
             if flag:
                 list_test_t.clear()  # Очищаем список для нового числа
                 len_test_t = t-3 # испаривить удалить -3
-                print("v", len_test_t)
-                print(q)
+                # print("v", len_test_t)
+                # print(q)
                 while len_test_t > 0:
                     # Генерируем случайное число для теста Ферма
                     test_t = randint(2, q - 1)
@@ -119,7 +121,7 @@ def prime_number_q():
                     if pow(test_t, q - 1, q) != 1:
                         flag = False
                         break
-            print(flag)
+            # print(flag)
             if flag:
                 # Если число прошло тест Ферма, добавляем его в словарь
                 data["q"] = q
